@@ -1,0 +1,45 @@
+﻿
+@model  Contact
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+
+    <h2>Conact Details</h2>
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <label class="w-10">Name:</label>
+            @Model.firstName @Model.lastName
+        </li>
+        <li class="list-group-item">
+            <label class="w-10">Phone</label>
+            @Model.phone
+        </li>
+        <li class="list-group-item">
+            <label class="w-10">Email:</label>
+            @Model.email
+        </li>
+        <li class="list-group-item">
+            <label class="w-10">Organization:</label>
+            @Model.organization
+        </li>
+        <li class="list-group-item">
+            <label class="w-10">Category:</label>
+            @Model.category.categoryName
+        </li>
+        <li class="list-group-item">
+            <label class="w-10">Date added:</label>
+            @Model.dateAdded.ToShortDateString() at @Model.dateAdded.ToShortTimeString();
+        </li>
+        <li class="list-group-item">
+            
+            <a asp-controller="Contact" asp-action="Edit"  asp-route-id="@Model.contactID" asp-route-slug="@Model.Slug" class="btn btn-dark">Edit</a>
+            <a asp-controller="Contact" asp-action="Delete" asp-route-id="@Model.contactID" asp-route-slug="@Model.Slug" class="btn btn-dark">Delete</a>
+            <a asp-controller="Home" asp-action="Index"class="btn btn-dark">Home</a>
+        </li>
+
+    </ul>
+
+</div>
+

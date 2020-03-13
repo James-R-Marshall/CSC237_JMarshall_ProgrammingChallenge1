@@ -1,0 +1,35 @@
+﻿@model  Contact
+@{ViewBag.Title = $"{ViewBag.Action} Contact";}
+
+
+    <div class="container">
+        <h2>@ViewBag.Action Contact</h2>
+
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="firstName">First Name:</label>
+                    <input asp-for="firstName" class="form-control" />
+                    <label asp-for="lastName">Last Name:</label>
+                    <input asp-for="lastName" class="form-control" />
+                    <label asp-for="phone">Phone:</label>
+                    <input asp-for="phone" class="form-control" />
+                    <label asp-for="email">Email:</label>
+                    <input asp-for="email" class="form-control" />
+                    <label asp-for="category">Relation:</label>
+                    <select asp-for="CategoryID" class="form-control">
+                        <option value="0">Select a category</option>
+                        @foreach (Category category in ViewBag.Categories)
+                        {
+                            <option value="@category.CategoryID">@category.categoryName</option>
+                        }
+                    </select>
+                    <label asp-for="organization">Organization:</label>
+                    <input asp-for="organization" class="form-control" />
+                    <input type="hidden" asp-for="contactID" />
+
+                </div>
+                <button type="submit" class="btn btn-dark">@ViewBag.Action</button>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-dark">Cancel</a>
+            </form>
+    </div>
